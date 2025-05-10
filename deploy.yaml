@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autopilot-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: autopilot-controller
+  template:
+    metadata:
+      labels:
+        app: autopilot-controller
+    spec:
+      containers:
+      - name: autopilot-controller
+        image: <your-docker-image>
+        env:
+        - name: KUBECONFIG
+          value: "/root/.kube/config"
